@@ -1,8 +1,8 @@
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSeaarch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { CreatedTodoButton } from './CreatedTodoButton';
+import { TodoCounter } from './TodoCounter/TodoCounter';
+import { TodoSearch } from './TodoSearch/TodoSeaarch';
+import { TodoList } from './TodoList/TodoList';
+import { TodoItem } from './TodoItem/TodoItem';
+import { CreatedTodoButton } from './CreatedTodoButton/CreatedTodoButton';
 import './App.css';
 
 const defaultTodos = [
