@@ -1,6 +1,11 @@
+import './TodoSearch.css';
+
 function TodoSearch() {
   return (
-    <input placholder="Buscar" />
+    <input 
+      placholder="Buscar"
+      className="TodoSearch" 
+    />
   );
 }
 

@@ -1,6 +1,10 @@
-h1 {
-  font-size: 2rem;
-  text-align: center;
-  margin: 0;
-  padding: 4rem;
+.TodoCounter{
+  font-size:2rem;
+  text-align:center;
+  margin:0;
+  padding:4rem;
+  font-weight:400
+}
+.TodoCounter span{
+  font-weight:700
 }

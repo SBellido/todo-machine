@@ -1,9 +1,19 @@
+import './TodoItem.css';
+
 function TodoItem(props) {
   return (
-    <li>
-      <span>V {props.completed}</span>
-      <p>{props.text}</p>
-      <span>X</span>
+    <li className="TodoItem">
+      <span className="Icon Icon-check 
+      Icon-check--active">
+        V {props.completed}
+      </span>
+      <p className="TodoItem-p 
+      TodoItem-p--complete">
+        {props.text}
+      </p>
+      <span className="Icon Icon-delete">
+        X
+      </span>
     </li>
   );
 }
