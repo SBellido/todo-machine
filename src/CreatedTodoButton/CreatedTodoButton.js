@@ -1,10 +1,18 @@
-import './CreatedTodoButton';
+import './CreatedTodoButton.css';
 
 function CreatedTodoButton() {
   return (
-    <button>
-      +
-    </button>
+    <button 
+    className="CreateTodoButton"
+    onClick={
+      (event) => {
+        console.log("click")
+        console.log(event.target)
+
+      }
+      
+    }
+    >+</button>
   );
 }
 
