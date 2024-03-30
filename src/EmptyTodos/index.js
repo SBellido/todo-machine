@@ -3,7 +3,9 @@ import './EmptyTodos.css';
 
 function EmptyTodos() {
   return (
-    <p>Crea un nuevo TODO.</p>
+    <div className="Message-container">
+      <p className='Message'>Crea un nuevo TODO</p>
+    </div>
   );
 }
 
