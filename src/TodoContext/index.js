@@ -25,22 +25,31 @@ function TodoProvider({ children }) {
     }
   );
 
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      text,
+      completed: false,
+    });
+    saveTodos(newTodos);
+  }
+
   const completeTodo = (text) => {
-    const newItem = [...todos];
-    const todoIndex = newItem.findIndex(
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
       (todo) => todo.text === text
     );
-    newItem[todoIndex].completed = true;
-    saveTodos(newItem);
+    newTodos[todoIndex].completed = true;
+    saveTodos(newTodos);
   };
 
   const deleteTodo = (text) => {
-    const newItem = [...todos];
-    const todoIndex = newItem.findIndex(
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
       (todo) => todo.text === text
     );
-    newItem.splice(todoIndex, 1);
-    saveTodos(newItem);
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
   };
 
   return ( 
@@ -52,10 +61,11 @@ function TodoProvider({ children }) {
       searchValue,
       setSearchValue,
       searchedTodos,
+      addTodo,
       completeTodo,
       deleteTodo, 
       openModal,
-      setOpenModal
+      setOpenModal, 
     }}>
       {children}
     </TodoContext.Provider>
