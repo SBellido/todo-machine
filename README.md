@@ -15,26 +15,26 @@ A continuación, se presentan algunas capturas de pantalla de la aplicación par
 
 ### Pantalla de Inicio
 
-![Pantalla de Inicio](C:\Users\Netgear\CURSOS\React\React.js\todo-machine\src\images\0.png)
+![Pantalla de Inicio](src/images/0.png)
 
 ### Agregar una Tarea
 
-![Agregar una Tarea](C:\Users\Netgear\CURSOS\React\React.js\todo-machine\src\images\2.png)
-![Agregar una Tarea](C:\Users\Netgear\CURSOS\React\React.js\todo-machine\src\images\3.png)
+![Agregar una Tarea](src/images/2.png)
+![Agregar una Tarea](src/images/3.png)
 
 ### Tareas Completadas
 
-![Tareas Completadas](C:\Users\Netgear\CURSOS\React\React.js\todo-machine\src\images\10.png)
+![Tareas Completadas](src/images/10.png)
 
 ### Buscar Tareas
 
-![Eliminar Tareas](C:\Users\Netgear\CURSOS\React\React.js\todo-machine\src\images\13.png)
-![Eliminar Tareas](C:\Users\Netgear\CURSOS\React\React.js\todo-machine\src\images\14.png)
+![Eliminar Tareas](src/images/13.png)
+![Eliminar Tareas](src/images/14.png)
 
 ### Eliminar Tareas
 
-![<Eliminar> Tareas](C:\Users\Netgear\CURSOS\React\React.js\todo-machine\src\images\15.png)
-![<Eliminar> Tareas](C:\Users\Netgear\CURSOS\React\React.js\todo-machine\src\images\16.png)
+![<Eliminar> Tareas](src/images/15.png)
+![<Eliminar> Tareas](src/images/16.png)
 
 ## Instrucciones de inicio
 
