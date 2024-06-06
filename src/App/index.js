@@ -1,16 +1,109 @@
-import React from 'react';
-import { useTodos } from './useTodos';
-import { TodoHeader } from '../TodoHeader';
-import { TodoCounter } from '../TodoCounter';
-import { TodoSearch } from '../TodoSearch';
-import { TodoList } from './../TodoList';
-import { TodoItem } from './../TodoItem';
-import { CreatedTodoButton } from './../CreatedTodoButton';
-import { TodosLoading } from '../TodosLoading';
-import { TodosError } from '../TodosError';
-import { EmptyTodos } from '../EmptyTodos';
-import { TodoForm } from '../TodoForm';
-import { Modal } from '../Modal';
+// import React from 'react';
+// import { useTodos } from './useTodos';
+// import { TodoHeader } from '../TodoHeader';
+// import { TodoCounter } from '../TodoCounter';
+// import { TodoSearch } from '../TodoSearch';
+// import { TodoList } from './../TodoList';
+// import { TodoItem } from './../TodoItem';
+// import { CreatedTodoButton } from './../CreatedTodoButton';
+// import { TodosLoading } from '../TodosLoading';
+// import { TodosError } from '../TodosError';
+// import { EmptyTodos } from '../EmptyTodos';
+// import { TodoForm } from '../TodoForm';
+// import { Modal } from '../Modal';
+
+// function App() {
+//   const {
+//     loading,
+//     error,
+//     searchedTodos,
+//     completeTodo,
+//     deleteTodo,
+//     openModal,
+//     addTodo,
+//     setOpenModal,
+//     completedTodos,
+//     totalTodos,
+//     searchValue,
+//     setSearchValue,
+//   } = useTodos();
+
+//   return (
+//     <>
+//       <TodoHeader>
+//         <TodoCounter
+//           totalTodos={totalTodos}
+//           completedTodos={completedTodos}
+//         />
+//         <TodoSearch
+//           searchValue={searchValue}
+//           setSearchValue={setSearchValue}
+//         />
+//       </TodoHeader>
+
+//       <TodoList
+//         error={error}
+//         loading={loading}
+//         searchedTodos={searchedTodos}
+//         totalTodos={totalTodos}
+//         searchText={searchValue}
+//         onError={() => <TodosError />}
+//         onLoading={() => <TodosLoading />}
+//         onEmptyTodos={() => <EmptyTodos />}
+//         onEmptySearchResults={
+//           (searchText) => <p>No hay resultados para {searchText}</p>
+//         }
+//         // render={todo => (
+//         //   <TodoItem
+//         //     key={todo.text}
+//         //     text={todo.text}
+//         //     completed={todo.completed}
+//         //     onComplete={() => completeTodo(todo.text)}
+//         //     onDelete={() => deleteTodo(todo.text)}
+//         //   />
+//         // )}
+//       >
+//         {todo => (
+//           <TodoItem
+//             key={todo.text}
+//             text={todo.text}
+//             completed={todo.completed}
+//             onComplete={() => completeTodo(todo.text)}
+//             onDelete={() => deleteTodo(todo.text)}
+//           />
+//         )}
+//       </TodoList>
+
+//       <CreatedTodoButton
+//         setOpenModal={setOpenModal}
+//       />
+
+//       {openModal && (
+//         <Modal>
+//           <TodoForm
+//             addTodo={addTodo}
+//             setOpenModal={setOpenModal}/>
+//         </Modal>
+//       )}
+//     </>
+//   );
+
+// }
+
+// export default App;
+import React from "react";
+import { useTodos } from "./useTodos";
+import { TodoHeader } from "../TodoHeader";
+import { TodoCounter } from "../TodoCounter";
+import { TodoSearch } from "../TodoSearch";
+import { TodoList } from "./../TodoList";
+import { TodoItem } from "./../TodoItem";
+import { CreatedTodoButton } from "./../CreatedTodoButton";
+import { TodosLoading } from "../TodosLoading";
+import { TodosError } from "../TodosError";
+import { EmptyTodos } from "../EmptyTodos";
+import { TodoForm } from "../TodoForm";
+import { Modal } from "../Modal";
 
 function App() {
   const {
@@ -29,19 +122,13 @@ function App() {
   } = useTodos();
 
   return (
-    <>  
+    <>
       <TodoHeader>
-        <TodoCounter 
-          totalTodos={totalTodos}
-          completedTodos={completedTodos}
-        />
-        <TodoSearch 
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
+        <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
+        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       </TodoHeader>
 
-      <TodoList 
+      <TodoList
         error={error}
         loading={loading}
         searchedTodos={searchedTodos}
@@ -50,44 +137,30 @@ function App() {
         onError={() => <TodosError />}
         onLoading={() => <TodosLoading />}
         onEmptyTodos={() => <EmptyTodos />}
-        onEmptySearchResults={
-          (searchText) => <p>No hay resultados para {searchText}</p>
-        }
-        // render={todo => (
-        //   <TodoItem 
-        //     key={todo.text} 
-        //     text={todo.text} 
-        //     completed={todo.completed}
-        //     onComplete={() => completeTodo(todo.text)}
-        //     onDelete={() => deleteTodo(todo.text)}
-        //   />
-        // )}
+        onEmptySearchResults={(searchText) => (
+          <p>No hay resultados para {searchText}</p>
+        )}
       >
-        {todo => (
-          <TodoItem 
-            key={todo.text} 
-            text={todo.text} 
+        {(todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
             completed={todo.completed}
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}
           />
         )}
       </TodoList>
-    
-      <CreatedTodoButton 
-        setOpenModal={setOpenModal}
-      />
+
+      <CreatedTodoButton setOpenModal={setOpenModal} />
 
       {openModal && (
         <Modal>
-          <TodoForm 
-            addTodo={addTodo}
-            setOpenModal={setOpenModal}/>
+          <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
         </Modal>
       )}
     </>
   );
-
 }
 
 export default App;
