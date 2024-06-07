@@ -9,7 +9,7 @@ import "./index.css";
  * Punto de entrada de la aplicación React.
  * Renderiza el componente principal de la aplicación (App) en el elemento con el id 'root'.
  *
- * También inicia la medición del rendimiento de la aplicación si se desea.
+ * También permite envolver el componente principal con una función de saludo.
  */
 
 function App(props) {
