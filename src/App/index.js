@@ -3,15 +3,15 @@ import { useTodos } from "./useTodos";
 import { TodoHeader } from "../TodoHeader";
 import { TodoCounter } from "../TodoCounter";
 import { TodoSearch } from "../TodoSearch";
-import { TodoList } from "./../TodoList";
-import { TodoItem } from "./../TodoItem";
-import { CreatedTodoButton } from "./../CreatedTodoButton";
-import { TodosLoading } from "../TodosLoading";
+import { TodoList } from "../TodoList";
+import { TodoItem } from "../TodoItem";
 import { TodosError } from "../TodosError";
+import { TodosLoading } from "../TodosLoading";
 import { EmptyTodos } from "../EmptyTodos";
 import { TodoForm } from "../TodoForm";
+import { CreatedTodoButton } from "../CreatedTodoButton";
 import { Modal } from "../Modal";
-
+import { ChangeAlertWithStorageListener } from "../ChangeAlert";
 /**
  * Componente principal de la aplicación Todo
  *
@@ -29,7 +29,8 @@ import { Modal } from "../Modal";
  * - Modal: Modal que contiene el formulario para agregar nuevos TODOs.
  * - TodoForm: Formulario para agregar un nuevo TODO.
  * - TodosLoading, TodosError, EmptyTodos: Componentes de estado para carga, error y lista vacía.
- *
+ * - ChangeAlertWithStorageListener: Componente para alertar cambios en el almacenamiento local.
+
  * Estado manejado:
  *
  * - loading: Indica si los TODOs están cargando.
@@ -48,38 +49,37 @@ import { Modal } from "../Modal";
 
 function App() {
   const {
-    loading,
     error,
+    loading,
     searchedTodos,
     completeTodo,
     deleteTodo,
     openModal,
     setOpenModal,
-    completedTodos,
     totalTodos,
+    completedTodos,
     searchValue,
     setSearchValue,
     addTodo,
+    sincronizeTodos,
   } = useTodos();
-
   return (
-    <>
+    <React.Fragment>
       <TodoHeader loading={loading}>
         <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
         <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       </TodoHeader>
-
       <TodoList
         error={error}
         loading={loading}
-        searchedTodos={searchedTodos}
         totalTodos={totalTodos}
+        searchedTodos={searchedTodos}
         searchText={searchValue}
         onError={() => <TodosError />}
         onLoading={() => <TodosLoading />}
         onEmptyTodos={() => <EmptyTodos />}
         onEmptySearchResults={(searchText) => (
-          <p>No hay resultados para {searchText}</p>
+          <p>No hay resultados para{searchText}</p>
         )}
       >
         {(todo) => (
@@ -92,16 +92,14 @@ function App() {
           />
         )}
       </TodoList>
-
-      <CreatedTodoButton setOpenModal={setOpenModal} />
-
-      {openModal && (
+      {!!openModal && (
         <Modal>
           <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
         </Modal>
       )}
-    </>
+      <CreatedTodoButton setOpenModal={setOpenModal} />
+      <ChangeAlertWithStorageListener sincronize={sincronizeTodos} />
+    </React.Fragment>
   );
 }
-
 export default App;

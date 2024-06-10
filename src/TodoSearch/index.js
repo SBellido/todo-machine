@@ -16,6 +16,7 @@ import "./TodoSearch.css";
  */
 
 function TodoSearch({ searchValue, setSearchValue, loading }) {
+  // Función que se ejecuta cuando el valor del input cambia
   const onSearchValueChange = (event) => {
     setSearchValue(event.target.value);
   };

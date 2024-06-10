@@ -26,7 +26,6 @@ import { useLocalStorage } from "./useLocalStorage";
  * - loading, error, completedTodos, totalTodos, searchValue, setSearchValue,
  *   searchedTodos, addTodo, completeTodo, deleteTodo, openModal, setOpenModal
  */
-
 function useTodos() {
   const {
     item: todos,
@@ -75,6 +74,12 @@ function useTodos() {
     saveTodos(newTodos);
   };
 
+  const sincronizeTodos = () => {
+    // Actualizar los TODOs desde el almacenamiento local
+    const localTodos = JSON.parse(localStorage.getItem("TODOS_V1")) || [];
+    saveTodos(localTodos);
+  };
+
   return {
     loading,
     error,
@@ -88,6 +93,7 @@ function useTodos() {
     deleteTodo,
     openModal,
     setOpenModal,
+    sincronizeTodos,
   };
 }
 

@@ -19,6 +19,8 @@ import "./TodoList.css";
  */
 
 function TodoList(props) {
+  const renderFunc = props.children || props.render;
+
   return (
     <section className="TodoList-container">
       {props.error && props.onError()}
@@ -31,7 +33,7 @@ function TodoList(props) {
         props.onEmptySearchResults(props.searchText)}
 
       <ul className="TodoList">
-        {props.searchedTodos.map((todo) => props.children(todo))}
+        {!props.loading && !props.error && props.searchedTodos.map(renderFunc)}
       </ul>
     </section>
   );
