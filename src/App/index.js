@@ -11,7 +11,7 @@ import { EmptyTodos } from "../EmptyTodos";
 import { TodoForm } from "../TodoForm";
 import { CreatedTodoButton } from "../CreatedTodoButton";
 import { Modal } from "../Modal";
-import { ChangeAlertWithStorageListener } from "../ChangeAlert";
+import { ChangeAlert } from "../ChangeAlert";
 /**
  * Componente principal de la aplicación Todo
  *
@@ -98,7 +98,7 @@ function App() {
         </Modal>
       )}
       <CreatedTodoButton setOpenModal={setOpenModal} />
-      <ChangeAlertWithStorageListener sincronize={sincronizeTodos} />
+      <ChangeAlert sincronize={sincronizeTodos} />
     </React.Fragment>
   );
 }
