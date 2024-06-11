@@ -48,27 +48,34 @@ import { ChangeAlert } from "../ChangeAlert";
  */
 
 function App() {
+  const { state, stateUpdaters } = useTodos();
+
   const {
     error,
     loading,
     searchedTodos,
-    completeTodo,
-    deleteTodo,
-    openModal,
-    setOpenModal,
     totalTodos,
     completedTodos,
+    openModal,
     searchValue,
-    setSearchValue,
+  } = state;
+
+  const {
+    setOpenModal,
     addTodo,
+    completeTodo,
+    deleteTodo,
+    setSearchValue,
     sincronizeTodos,
-  } = useTodos();
+  } = stateUpdaters;
+
   return (
     <React.Fragment>
       <TodoHeader loading={loading}>
         <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
         <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       </TodoHeader>
+
       <TodoList
         error={error}
         loading={loading}
@@ -79,7 +86,7 @@ function App() {
         onLoading={() => <TodosLoading />}
         onEmptyTodos={() => <EmptyTodos />}
         onEmptySearchResults={(searchText) => (
-          <p>No hay resultados para{searchText}</p>
+          <p>No hay resultados para {searchText}</p>
         )}
       >
         {(todo) => (
@@ -92,14 +99,18 @@ function App() {
           />
         )}
       </TodoList>
+
       {!!openModal && (
         <Modal>
           <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
         </Modal>
       )}
+
       <CreatedTodoButton setOpenModal={setOpenModal} />
+
       <ChangeAlert sincronize={sincronizeTodos} />
     </React.Fragment>
   );
 }
+
 export default App;

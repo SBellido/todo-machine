@@ -26,10 +26,12 @@ import { useLocalStorage } from "./useLocalStorage";
  * - loading, error, completedTodos, totalTodos, searchValue, setSearchValue,
  *   searchedTodos, addTodo, completeTodo, deleteTodo, openModal, setOpenModal
  */
+
 function useTodos() {
   const {
     item: todos,
     saveItem: saveTodos,
+    sincronizeItem: sincronizeTodos,
     loading,
     error,
   } = useLocalStorage("TODOS_V1", []);
@@ -74,27 +76,32 @@ function useTodos() {
     saveTodos(newTodos);
   };
 
-  const sincronizeTodos = () => {
-    // Actualizar los TODOs desde el almacenamiento local
-    const localTodos = JSON.parse(localStorage.getItem("TODOS_V1")) || [];
-    saveTodos(localTodos);
-  };
+  // const sincronizeTodos = () => {
+  //   // Actualizar los TODOs desde el almacenamiento local
+  //   const localTodos = JSON.parse(localStorage.getItem("TODOS_V1")) || [];
+  //   saveTodos(localTodos);
+  // };
 
-  return {
+  const state = {
     loading,
     error,
-    completedTodos,
     totalTodos,
+    completedTodos,
     searchValue,
+    searchedTodos: searchedTodos || [],
+    openModal,
+  };
+
+  const stateUpdaters = {
     setSearchValue,
-    searchedTodos,
     addTodo,
     completeTodo,
     deleteTodo,
-    openModal,
     setOpenModal,
     sincronizeTodos,
   };
+
+  return { state, stateUpdaters };
 }
 
 export { useTodos };
